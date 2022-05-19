@@ -6,8 +6,8 @@ import java.io.Serializable;
 // JSP: 자바빈즈 (getter/setter, 기본 생성자, Serializable)
 public class Product implements Serializable{
 	
-	// 이거를 써줘야 JSP에서 쓸 수 있는 객체가 된다.
-	private static final long serialVersionUID = -152607505256033689L;
+	// 이거를 써줘야 JSP에서 쓸 수 있는 객체가 된다. 없어도 된다고 해서 주석 처리
+	//private static final long serialVersionUID = -152607505256033689L;
 	
 	private String productId;
 	private String name;
@@ -19,7 +19,7 @@ public class Product implements Serializable{
 	private String condition;
 	
 	// 빈생성자
-	public Product() {};
+	//public Product() {};
 	
 	public Product(String productId, String name, int unitPrice) {
 		this.productId = productId;
@@ -76,12 +76,12 @@ public class Product implements Serializable{
 		this.condition = condition;
 	}
 
-	@Override
-	public String toString() {
-		return "Product [productId=" + productId + ", name=" + name + ", unitPrice=" + unitPrice + ", description="
-				+ description + ", manufacturer=" + manufacturer + ", category=" + category + ", unitsInstock="
-				+ unitsInstock + ", condition=" + condition + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Product [productId=" + productId + ", name=" + name + ", unitPrice=" + unitPrice + ", description="
+//				+ description + ", manufacturer=" + manufacturer + ", category=" + category + ", unitsInstock="
+//				+ unitsInstock + ", condition=" + condition + "]";
+//	}
 	
 	
 }
