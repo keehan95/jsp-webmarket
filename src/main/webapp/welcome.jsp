@@ -1,55 +1,73 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.List" %>
+<%@ page import="dto.Product" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="EUC-KR">
+	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-	<jsp:include page="menu.jsp"></jsp:include>
-	<%!
-	// º¯¼ö, ¸Þ¼­µå ¼±¾ð
-	String greeting = "À¥ ¼îÇÎ¸ô¿¡ ¿À½Å °ÍÀ» È¯¿µÇÕ´Ï´Ù";
-	String tagline = "Welcome to Web Market!"; %>
-	<%
-	// ±×³É java ÄÚµå
-	//out.println("Hello World !!!");
-	%>
-	<!-- p-5: ÀüÃ¼ ÆÐµù 5 (±²ÀåÈ÷ ¸¹ÀÌ) º¸ÅëÀº 3-->
-	<!-- bg-primary: ±âº» »ö»ó-->
-	<!-- text-white: ±ÛÀÚ ÇÏ¾é°Ô-->
-	<div class="p-5 bg-primary text-white">
-		<!-- container: ÁÂ¿ì °¡¿îµ¥ Á¤·Ä-->
-	    <div class="container">
-	    	<!-- display-3: Å« ±ÛÀÚ Áß¿¡ º¸Åë Å©±â-->
-	        <h1 class="display-3">
-	        	<%= greeting %>
-	        </h1>
-	    </div>
+	<jsp:include page="menu.jsp" />
+    <%!
+    // ë³€ìˆ˜, ë©”ì„œë“œ ì„ ì–¸
+    String greeting = "ì›¹ ì‡¼í•‘ëª°ì— ì˜¤ì‹  ê²ƒì„ í™˜ì˜í•©ë‹ˆë‹¤";
+    String tagline = "Welcome to Web Market!";
+    %>
+    <%
+    // ê·¸ëƒ¥ java ì½”ë“œ
+    //out.println("<h1>Hello World !!!!!111</h1>");
+    %>
+    <!-- p-5 :ì „ì²´ íŒ¨ë”© 5 (êµ‰ìž¥ížˆ ë§Žì´) (3 : ë³´í†µ) -->
+    <!-- bg-primary : ê¸°ë³¸ ìƒ‰ìƒ -->
+    <!-- text-white : ê¸€ìž í•˜ì–—ê²Œ -->
+    <div class="p-5 bg-primary text-white">
+      <!-- container : ì¢Œìš° ê°€ìš´ë° ì •ë ¬ -->
+	  <div class="container">
+	    <!-- display-3 : í° ê¸€ìžì¤‘ì— ë³´í†µ í¬ê¸° -->
+	    <h1 class="display-3">
+	       <%= greeting %>
+	    </h1>
+	  </div>
 	</div>
 	
 	<div class="container">
-	    <div class="text-center">
-	        <h3>
-	        	<%= tagline %>
-	        </h3>
-	        <%
-	        // 1ÃÊ¿¡ ÇÑ¹ø¾¿ »õ·Î°íÄ§
-	        response.setIntHeader("Refresh", 5);
-	        
-	        Date today = new Date();
-	        SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss a");
-	        out.println("ÇöÀç Á¢¼Ó ½Ã°£: " + format.format(today));
-	        %>
-	    </div>
+	  <div class="text-center">
+	    <h3>
+	       <%= tagline %>
+	    </h3>
+	    <%
+	    // 1ì´ˆì— í•œë²ˆì”© ìƒˆë¡œê³ ì¹¨
+	    response.setIntHeader("Refresh", 5);
+	    
+	    Date today = new Date();
+	    
+	    SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss a");
+	    
+	    out.println("í˜„ìž¬ ì ‘ì† ì‹œê°„: " + format.format(today));
+	    
+	    session.setAttribute("name", "ì˜¤ì¤€ì„");
+	    session.setAttribute("age", 23);
+	    
+	    List<String> foods = new ArrayList<>();
+	    foods.add("ì§œìž¥ë©´");
+	    foods.add("ë¼ë©´");
+	    foods.add("íƒ•ìˆ˜ìœ¡");
+	    
+	    session.setAttribute("food", foods);
+	    session.setMaxInactiveInterval(5);
+	    
+	    %>
+	  </div>
 	</div>
 	
-	<jsp:include page="footer.jsp"></jsp:include>
-
+	<jsp:include page="footer.jsp" />
+	
 </body>
 </html>
